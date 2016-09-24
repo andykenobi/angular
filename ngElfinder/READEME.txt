@@ -1,0 +1,29 @@
+elFinder
+1. Abra o "elFinder.html" e troque o script padrão por:
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#elfinder').elfinder({
+                url: 'php/connector.minimal.php',
+                width: "100%",
+                height: $(window).height() - 20,
+                resizable: false,
+                getFileCallback: function(file) {
+                    window.opener.ngElfinderCallback(file);
+                    window.close();
+                }
+            });
+        });
+    </script>
+
+Angular
+1. Implemente "ngElfinder.js" no seu html;
+2. Adicione em seu módulo: "ngElfinder";
+3. Adicione em seu controle: "ngElfinder";
+4. Chame: "ngElfinder.open(function(file){});";
+5. Have fun!
+
+
+
+ATENÇÃO: deixe o "ngElfinder.js" na mesma pasta que o tem a "pasta do elfinder". Exemplo:
+-- elfinder folder
+-- ngElfinder.js

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="ngElfinder.js"></script>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl as main">
+        <button ng-click="main.getFile()">Open Elfinder</button>
+        <br />
+        <br />
+        <image ng-src="{{main.image}}" width="200px" height="200px"></image>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', ["ngElfinder"]);
+        app.controller('myCtrl', function($scope, ngElfinder) {
+            this.image = "";
+
+            this.getFile = function() {
+                ngElfinder.open(function(file){
+                    $scope.$apply(function() {
+                        $scope.main.image = file.url;
+                    })
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
