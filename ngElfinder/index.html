@@ -13,9 +13,10 @@
 
     <script>
         var app = angular.module('myApp', ["ngElfinder"]);
-        app.controller('myCtrl', function($scope, ngElfinder) {
-            this.image = "";
+        app.controller('myCtrl', function($scope, ngElfinder, ngElfinderConfig) {
+            ngElfinderConfig.basePath = "";
 
+            this.image = "";
             this.getFile = function() {
                 ngElfinder.open(function(file){
                     $scope.$apply(function() {
