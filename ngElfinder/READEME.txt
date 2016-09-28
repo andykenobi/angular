@@ -19,10 +19,12 @@ Angular
 1. Implemente "ngElfinder.js" no seu html;
 2. Adicione em seu módulo: "ngElfinder";
 3. Adicione em seu controle: "ngElfinder";
-4. Adicione em seu controle; "ngElfinderConfig" para poder configurar 3 parmetros:
-    1. basePath (obrigatório): Indica o caminho que está o arquivo "ngElfinder.js". Ex: ngElfinderConfig.basePath = "plugins/angular";
-    2. windowWidth: Indica a largura da janela do elfinder. Ex: ngElfinderConfig.windowWidth = 1000;
-    3. windowHeight: indica a altura da janela do elfinder. Ex: ngElfinderConfig.windowHeight = 600;
+4. Adicione em seu config; "ngElfinderConfigProvider" para poder configurar 3 parmetros apartir de um objeto.:
+    1. basePath (obrigatório): Indica o caminho que está o arquivo "ngElfinder.js";
+    2. windowWidth: Indica a largura da janela do elfinder;
+    3. windowHeight: indica a altura da janela do elfinder;
+    Ex:
+        ngElfinderConfigProvider.config({basePath: "/"});
 5. Chame: "ngElfinder.open(function(file){});";
 6. Have fun!
 

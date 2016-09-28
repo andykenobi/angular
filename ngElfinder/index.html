@@ -12,9 +12,8 @@
     </div>
 
     <script>
-        var app = angular.module('myApp', ["ngElfinder"]);
-        app.controller('myCtrl', function($scope, ngElfinder, ngElfinderConfig) {
-            ngElfinderConfig.basePath = "";
+        var app = angular.module("myApp", ["ngElfinder"]);
+        app.controller("myCtrl", function($scope, ngElfinder) {
 
             this.image = "";
             this.getFile = function() {
@@ -23,6 +22,12 @@
                         $scope.main.image = file.url;
                     })
                 });
+            }
+        });
+
+        app.config(function(ngElfinderConfigProvider) {
+            ngElfinderConfigProvider.SetConfig = {
+                basePath: ""
             }
         });
     </script>

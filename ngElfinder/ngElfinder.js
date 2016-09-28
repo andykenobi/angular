@@ -1,7 +1,7 @@
 var ngElfinder = angular.module("ngElfinder", []);
 
 ngElfinder.service("ngElfinder", function(ngElfinderConfig) {
-    var width = ngElfinderConfig.windowWidth;
+    var width = ngElfinderConfig.GetConfig().windowWidth;
     var height = ngElfinderConfig.windowHeight;
 
     this.open = function(callback) {
@@ -16,8 +16,35 @@ ngElfinder.service("ngElfinder", function(ngElfinderConfig) {
     }
 });
 
-ngElfinder.service("ngElfinderConfig", function() {
-    this.basePath = "";
-    this.windowWidth = 1000;
-    this.windowHeight = 600;
+ngElfinder.provider("ngElfinderConfig", function() {
+    var config = {
+        basePath: "",
+        windowWidth: 1000,
+        windowHeight: 600
+    }
+
+    this.$get = function() {
+        function SetConfig(obj) {
+            if (obj.basePath != undefined) {
+                config.basePath = obj.basePath;
+            }
+
+            if (obj.windowWidth != undefined) {
+                config.windowWidth = obj.windowWidth;
+            }
+
+            if (obj.windowHeight != undefined) {
+                config.windowHeight = obj.windowHeight;
+            }
+        }
+
+        function GetConfig() {
+            return config;
+        }
+
+        return {
+            SetConfig: SetConfig,
+            GetConfig: GetConfig
+        }
+    };
 });
